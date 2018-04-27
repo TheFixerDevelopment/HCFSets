@@ -13,6 +13,7 @@
 namespace hcfsets\sets;
 
 use pocketmine\entity\Effect;
+use pocketmine\entity\EffectInstance;
 use pocketmine\item\Item;
 use pocketmine\Player;
 
@@ -42,7 +43,7 @@ class HeldItemBuffs extends BuffEffectSet {
 		foreach($data as $item => $buffData) {
 			if(($item = Item::fromString($item)) instanceof Item) {
 				foreach($buffData as $effectData) {
-					$this->effects[$item->getId()] = Effect::getEffectByName($effectData["id"])->setAmplifier($effectData["amplifier"]);
+					$this->effects[$item->getId()] = Effect::getEffectByName($effectData["id"]($effectData["amplifier"]));
 				}
 			} else {
 				$this->getSet()->getManager()->getPlugin()->getLogger()->warning("Couldn't load held item buffs for item named '{$item}' in '{$this->getSet()->getDisplayName()}' set!");
