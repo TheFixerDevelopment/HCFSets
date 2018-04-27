@@ -13,6 +13,7 @@
 namespace hcfsets\sets;
 
 use pocketmine\entity\Effect;
+use pocketmine\entity\EffectInstance;
 use pocketmine\Player;
 
 class BuffEffectSet extends EffectSet {
@@ -47,7 +48,7 @@ class BuffEffectSet extends EffectSet {
 	 */
 	protected function parseEffects(array $data) {
 		for($i = 0; $i < count($data); $i++) {
-			$this->effects[] = Effect::getEffectByName($data[$i]["id"])->setAmplifier($data[$i]["amplifier"])->setDuration(20 * 30);
+			$this->effects[] = Effect::getEffectByName($data[$i]["id"]($data[$i]["amplifier"](20 * 30)));
 		}
 	}
 
