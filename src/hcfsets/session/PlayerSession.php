@@ -59,7 +59,7 @@ class PlayerSession {
 		$this->hasActiveItemBuff = $value;
 	}
 
-	public function tick($tick) {
+	public function tick(int $tick) {
 		if($this->ownerIsValid() and $this->hasActiveSet()) {
 			$this->activeSet->tickFor($this);
 			return true;
@@ -70,13 +70,13 @@ class PlayerSession {
 	/**
 	 * @return Set|null
 	 */
-	public function getSet() {
+	public function getSet(): Set {
 		return $this->activeSet;
 	}
 
 	public function checkSet(Item $item) {
 		if($this->ownerIsValid()) {
-			$armor = $this->owner->getInventory()->getArmorContents();
+			$armor = $this->owner->getArmorInventory()->getContents();
 			$armor[($item->isHelmet() ? 0 : $item->isChestplate() ? 1 : $item->isLeggings() ? 2 : $item->isBoots() ? 3 : 0)] = $item;
 			if($this->hasActiveSet() and $this->activeSet->matchesSet($armor)) return true;
 			echo "Looking for a matching set...\n";
