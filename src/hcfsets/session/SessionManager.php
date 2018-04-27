@@ -38,7 +38,7 @@ class SessionManager {
 				parent::__construct($manager->getPlugin());
 			}
 
-			public function onRun($currentTick) {
+			public function onRun(int $currentTick) {
 				$this->manager->tickSessions($currentTick);
 			}
 		};
@@ -49,7 +49,7 @@ class SessionManager {
 		return $this->plugin;
 	}
 
-	public function tickSessions($tick) {
+	public function tickSessions(int $tick) {
 		foreach($this->sessions as $hash => $session) {
 			if(!$session->tick($tick)) {
 				unset($this->sessions[$hash]);
