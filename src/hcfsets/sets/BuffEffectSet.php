@@ -26,7 +26,7 @@ class BuffEffectSet extends EffectSet {
 	public function applyBuffs(Player $player) {
 		foreach($this->effects as $e) {
 			$effect = clone $e;
-			$player->addEffect($effect->setDuration(20 * 30));
+			$player->addEffect(20 * 30));
 		}
 	}
 
@@ -48,7 +48,7 @@ class BuffEffectSet extends EffectSet {
 	 */
 	protected function parseEffects(array $data) {
 		for($i = 0; $i < count($data); $i++) {
-			$this->effects[] = Effect::getId($data[$i]["id"]($data[$i]["amplifier"](20 * 30)));
+			$this->effects[] = EffectInstance::getId($data[$i]["id"]($data[$i]["amplifier"](20 * 30)));
 		}
 	}
 
