@@ -26,7 +26,7 @@ class BuffEffectSet extends EffectSet {
 	public function applyBuffs(Player $player) {
 		foreach($this->effects as $e) {
 			$effect = clone $e;
-			$player->addEffect(20 * 30));
+			$player->addEffect(20 * 30);
 		}
 	}
 
