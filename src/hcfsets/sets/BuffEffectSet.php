@@ -48,7 +48,7 @@ class BuffEffectSet extends EffectSet {
 	 */
 	protected function parseEffects(array $data) {
 		for($i = 0; $i < count($data); $i++) {
-			$this->effects[] = Effect::getEffectByName($data[$i]["id"]($data[$i]["amplifier"](20 * 30)));
+			$this->effects[] = Effect::getId($data[$i]["id"]($data[$i]["amplifier"](20 * 30)));
 		}
 	}
 
